@@ -50,21 +50,6 @@ var Main = (function (_super) {
         this._bird.anchorOffsetX = bmd.width / 2;
         this._bird.anchorOffsetY = bmd.height / 2;
         this.addChild(this._bird);
-        /// 提示信息
-        this._txInfo = new egret.TextField;
-        this.addChild(this._txInfo);
-        this._txInfo.size = 28;
-        this._txInfo.x = 50;
-        this._txInfo.y = 50;
-        this._txInfo.width = this.stage.stageWidth - 100;
-        this._txInfo.textAlign = egret.HorizontalAlign.LEFT;
-        this._txInfo.textColor = 0x000000;
-        this._txInfo.type = egret.TextFieldType.DYNAMIC;
-        this._txInfo.lineSpacing = 6;
-        this._txInfo.multiline = true;
-        this._txInfo.text =
-            "这是由四个阶段的缓动动画组成的复合动画，并且往复循环（您不需要接触屏幕！）";
-        /// 开启显示
         this._idxCurrLocation = -1;
         this._bird.x = this._vcLocation[3].x;
         this._bird.y = this._vcLocation[3].y;
