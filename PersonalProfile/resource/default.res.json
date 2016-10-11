@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "bg_jpg,egret_icon_png,description_json,bg_2_jpg,bg_3_jpg",
+			"keys": "bg_jpg,egret_icon_png,description_json,bg_2_jpg,bg_3_jpg,cartoon-egret_00_png",
 			"name": "preload"
 		}
 	],
@@ -30,6 +30,11 @@
 			"name": "bg_3_jpg",
 			"type": "image",
 			"url": "assets/bg_3.jpg"
+		},
+		{
+			"name": "cartoon-egret_00_png",
+			"type": "image",
+			"url": "cartoon-egret_00.png"
 		}
 	]
 }
