@@ -376,6 +376,9 @@ class Main extends egret.DisplayObjectContainer {
         var pageArray = [sky, sky2, sky3];
         var textArray = [nameText, nameText2, nameText3];
         this.pageTurningBitmap(pageArray, pageNumAll, textArray);
+
+        var sound:egret.Sound = RES.getRes("torinouta_mp3");
+        var channel:egret.SoundChannel = sound.play(0,-2);
     }
 
 

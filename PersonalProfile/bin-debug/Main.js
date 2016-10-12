@@ -331,6 +331,8 @@ var Main = (function (_super) {
         var pageArray = [sky, sky2, sky3];
         var textArray = [nameText, nameText2, nameText3];
         this.pageTurningBitmap(pageArray, pageNumAll, textArray);
+        var sound = RES.getRes("torinouta_mp3");
+        var channel = sound.play(0, -2);
     };
     /**
      * 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。

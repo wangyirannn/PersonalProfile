@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "bg_jpg,description_json,bg_2_jpg,bg_3_jpg,cartoon-egret_00_png,egret_icon_jpg",
+			"keys": "bg_jpg,description_json,bg_2_jpg,bg_3_jpg,cartoon-egret_00_png,egret_icon_jpg,torinouta_mp3",
 			"name": "preload"
 		}
 	],
@@ -35,6 +35,11 @@
 			"name": "egret_icon_jpg",
 			"type": "image",
 			"url": "assets/egret_icon.jpg"
+		},
+		{
+			"name": "torinouta_mp3",
+			"type": "sound",
+			"url": "assets/torinouta.mp3"
 		}
 	]
 }
