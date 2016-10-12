@@ -147,22 +147,16 @@ var Main = (function (_super) {
         var stageYAfterMove = 0;
         for (var i = 0; i < pageArray.length; i++) {
             pageArray[i].addEventListener(egret.TouchEvent.TOUCH_BEGIN, function (e) {
-                console.log("Y:" + e.stageY);
                 stageYBeforeMove = e.stageY;
             }, this);
             pageArray[i].addEventListener(egret.TouchEvent.TOUCH_END, function (e) {
-                console.log("move to Y:" + e.stageY);
                 stageYAfterMove = e.stageY;
                 distance = stageYBeforeMove - stageYAfterMove;
                 //往后翻
                 if (distance > 0) {
-                    //var pageToNum = this.pageNumCurrent + 1;
-                    //console.log("现在开始往后翻，翻前页" + this.pageNumCurrent + "翻后页：" + pageToNum);
                     _this.pageTurningDetermine(pageNumAll, distance, pageArray[_this.pageNumCurrent], pageArray[_this.pageNumCurrent + 1], pageText[_this.pageNumCurrent], pageText[_this.pageNumCurrent + 1]);
                 }
                 else {
-                    //var pageNowNum = this.pageNumCurrent - 1;
-                    //console.log("现在开始往前翻，翻前页" + this.pageNumCurrent + "翻后页" + pageNowNum);
                     _this.pageTurningDetermine(pageNumAll, distance, pageArray[_this.pageNumCurrent], pageArray[_this.pageNumCurrent - 1], pageText[_this.pageNumCurrent], pageText[_this.pageNumCurrent - 1]);
                 }
             }, this);
@@ -182,18 +176,14 @@ var Main = (function (_super) {
             this.rollingPages(pictureBeforeMove, pictureAfterMove, moveDistance);
         }
         else if (moveDistance < -300 && this.pageNumCurrent != 0) {
-            //alert("中间的页往前翻");
             this.showText(textBeforeMove, 0, textBeforeMove.x, textBeforeMove.y + 10);
             this.pageTurningTween(pictureBeforeMove, pictureAfterMove);
             this.showText(textAfterMove, 1, textAfterMove.x, textAfterMove.y - 10);
             if (pictureAfterMove.y == 1136 || pictureAfterMove.y == 0 || pictureAfterMove.y == -1136) {
                 this.pageNumCurrent--;
             }
-            console.log("翻之后，当前页坐标" + pictureBeforeMove.y + "要翻到的y坐标" + pictureAfterMove.y);
         }
         else if (moveDistance > 300 && this.pageNumCurrent != pageNumAll) {
-            //alert("中间的页往后翻");
-            console.log("翻前，当前页坐标" + pictureBeforeMove.y + "要翻到的y坐标" + pictureAfterMove.y);
             this.showText(textBeforeMove, 0, textBeforeMove.x, textBeforeMove.y + 10);
             this.pageTurningTween(pictureBeforeMove, pictureAfterMove);
             this.showText(textAfterMove, 1, textAfterMove.x, textAfterMove.y - 10);
@@ -202,7 +192,6 @@ var Main = (function (_super) {
                 this.pageNumCurrent++;
             }
         }
-        console.log("page:" + this.pageNumCurrent);
     };
     /**
      * 滚动页面，小于300都是没翻动的
@@ -237,11 +226,6 @@ var Main = (function (_super) {
             pageBeforeTween.to({ y: tempTo }, 500);
         }
         pageAfterTween.to({ y: 0 }, 500);
-        /*        if (pageAfterMove.y == 1136) {
-                    pageAfterTween.to({ y: 0 }, 500);
-                } else if (pageAfterMove.y == 0) {
-                    pageAfterTween.to({ y: 1136 }, 500);
-                }*/
     };
     /**
      * text:想要变化的文字，toAlpha:所变到的alpha值，toX：去往的X坐标，toY：去往的Y坐标
@@ -250,12 +234,6 @@ var Main = (function (_super) {
         var tww = egret.Tween.get(text);
         tww.to({ "alpha": toAlpha, x: toX, y: toY }, 700);
     };
-    // egret.TouchEvent.TOUCH_BEGIN
-    //20160928Begin
-    /*var tween = egret.Tween.get(icon);
-    tween.to({x:100}, 2000).to({y:200}, 2000).call(function(){
-        //alert("aaa")
-    },this).to({x:26, y:33}, 20);*/
     /**
      * 创建游戏场景
      * Create a game scene
@@ -272,22 +250,16 @@ var Main = (function (_super) {
         //黑框部分
         var topMask = new egret.Shape();
         topMask.graphics.beginFill(0x000000, 0.5);
-        topMask.graphics.drawRect(0, 0, stageW, 172);
+        topMask.graphics.drawRect(0, 0, stageW, 200);
         topMask.graphics.endFill();
         topMask.y = 33;
         this.addChild(topMask);
         //Egret图标
-        var icon = this.createBitmapByName("egret_icon_png");
+        var icon = this.createBitmapByName("egret_icon_jpg");
         this.addChild(icon);
         icon.x = 26;
         icon.y = 33;
         this.addChild(this._bird);
-        //pageTurning(pageNumCurrent);
-        //2016touch
-        /*icon.touchEnabled = true;
-        icon.addEventListener(egret.TouchEvent.TOUCH_BEGIN,()=>{
-            alert(1111);
-        },this);*/
         var line = new egret.Shape();
         line.graphics.lineStyle(2, 0xffffff);
         line.graphics.moveTo(0, 0);
@@ -296,15 +268,6 @@ var Main = (function (_super) {
         line.x = 172;
         line.y = 61;
         this.addChild(line);
-        /*var colorLabel = new egret.TextField();
-        colorLabel.textColor = 0xffffff;
-        colorLabel.width = stageW - 172;
-        colorLabel.textAlign = "center";
-        colorLabel.text = "Hello Egret";
-        colorLabel.size = 24;
-        colorLabel.x = 172;
-        colorLabel.y = 80;
-        this.addChild(colorLabel);*/
         var textfield = new egret.TextField();
         this.addChild(textfield);
         textfield.alpha = 0;
@@ -355,14 +318,14 @@ var Main = (function (_super) {
         sky3.y = 1136;
         sky3.touchEnabled = true;
         var nameText3 = new egret.TextField();
-        nameText3.text = "END";
+        nameText3.text = "THE END";
         this.addChild(nameText3);
-        nameText3.textColor = 0xFFFFFF;
+        nameText3.textColor = 0x000000;
         nameText3.alpha = 0;
         nameText3.textAlign = egret.HorizontalAlign.CENTER;
-        nameText3.x = 320;
-        nameText3.y = 568;
-        nameText3.size = 128;
+        nameText3.x = 100;
+        nameText3.y = 300;
+        nameText3.size = 100;
         var pageNumAll = 2;
         //总页面数写作2其实是3页
         var pageArray = [sky, sky2, sky3];
