@@ -288,7 +288,7 @@ class Main extends egret.DisplayObjectContainer {
         topMask.graphics.endFill();
         topMask.y = 33;
         this.addChild(topMask);
-        //Egret图标
+        //头像
         var icon: egret.Bitmap = this.createBitmapByName("egret_icon_jpg");
         this.addChild(icon);
         icon.x = 26;
@@ -368,7 +368,7 @@ class Main extends egret.DisplayObjectContainer {
         nameText3.alpha = 0;
         nameText3.textAlign = egret.HorizontalAlign.CENTER;
         nameText3.x = 100;
-        nameText3.y = 300;
+        nameText3.y = 250;
         nameText3.size = 100;
         
         var pageNumAll = 2;
